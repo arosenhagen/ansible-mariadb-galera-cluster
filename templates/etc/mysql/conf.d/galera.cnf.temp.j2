@@ -84,8 +84,3 @@ encrypt=3
 tcert = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_cert.name }}
 tkey = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_key.name }}
 {% endif %}
-
-[server]
-proxy-protocol-networks={{ mariadb_proxy_protocol_networks }}
-max_connect_errors    = {{ mariadb_max_connect_errors }}
-max_connections       = {{ mariadb_max_connections }}
