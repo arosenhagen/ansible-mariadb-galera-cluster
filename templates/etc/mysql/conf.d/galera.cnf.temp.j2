@@ -6,7 +6,7 @@ innodb_autoinc_lock_mode=2
 #
 # Allow server to accept connections on this interface
 #
-#bind-address={{ mariadb_bind_address }}
+bind-address={{ mariadb_bind_address }}
 
 {% if mariadb_charset_server | default('auto') != 'auto' %}
 character-set-server  = {{ mariadb_charset_server }}
@@ -86,6 +86,6 @@ tkey = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_key.name }}
 {% endif %}
 
 [server]
-proxy-protocol-networks=10.0.3.0/24, localhost
-max_connect_errors    = 4294967295
-max_connections       = 100000
+proxy-protocol-networks={{ mariadb_proxy_protocol_networks }}
+max_connect_errors    = {{ mariadb_max_connect_errors }}
+max_connections       = {{ mariadb_max_connections }}

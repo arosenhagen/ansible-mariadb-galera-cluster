@@ -48,6 +48,12 @@ mariadb_mysql_settings:
   query_cache_size: "16M"
   # MariaDB default: https://mariadb.com/kb/en/server-system-variables/#thread_cache_size
   thread_cache_size: 256
+  max_connections: 100000
+  max_connect_errors: 4294967295
+
+mariadb_proxy_protocol_networks: "localhost"
+mariadb_max_connect_errors: 4294967295
+mariadb_max_connections: 100000
 
 # Define TLS certs & keys which will be used to encrypt mysql, WSREP, SST connections
 # This variable should have defined exactly three items, any other item count is handled like none.
