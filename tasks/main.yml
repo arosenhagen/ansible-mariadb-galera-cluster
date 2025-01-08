@@ -67,9 +67,13 @@
 - ansible.builtin.import_tasks: galera_monitoring.yml
   tags:
     - config_galera_monitoring
-  when: galera_enable_galera_monitoring_script
+  when:
+    - galera_enabled
+    - galera_enable_galera_monitoring_script
 
 - ansible.builtin.import_tasks: cacti.yml
   tags:
     - config_cacti_monitoring
-  when: galera_enable_cacti_monitoring
+  when:
+    - galera_enabled
+    - galera_enable_cacti_monitoring
