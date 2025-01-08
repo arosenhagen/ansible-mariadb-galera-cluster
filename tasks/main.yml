@@ -50,6 +50,8 @@
     - mysql_users
 
 - ansible.builtin.import_tasks: setup_cluster.yml
+  when:
+    - galera_enabled
   tags:
     - config
 
