@@ -79,4 +79,8 @@ default-character-set		= {{ mariadb_charset_client }}
 [isamchk]
 key_buffer_size = 16M
 
+[server]
+proxy-protocol-networks={{ mariadb_proxy_protocol_networks }}
+max_connect_errors    = {{ mariadb_max_connect_errors }}
+
 !includedir /etc/mysql/conf.d/

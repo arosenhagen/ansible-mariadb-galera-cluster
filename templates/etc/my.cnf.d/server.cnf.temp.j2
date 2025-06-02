@@ -41,6 +41,7 @@ ssl_cert = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_cert.name 
 ssl_key = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_key.name }}
 {% endif %}
 
+{% if galera_enabled %}
 [galera]
 wsrep_on=ON
 wsrep_node_name={{ ansible_hostname }}
@@ -80,3 +81,8 @@ encrypt=3
 tcert = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_cert.name }}
 tkey = {{ mariadb_certificates_dir }}/{{ mariadb_tls_files.server_key.name }}
 {% endif %}
+{% endif %}
+
+[server]
+proxy-protocol-networks={{ mariadb_proxy_protocol_networks }}
+max_connect_errors    = {{ mariadb_max_connect_errors }}

@@ -6,6 +6,9 @@
 # Define mariadb version
 mariadb_version: "10.11"
 
+# Defines if we should enable Galera at all.
+galera_enabled: true
+
 # Defines if we should enable the MariaDB repo or use version within OS repos.
 galera_enable_mariadb_repo: true
 
@@ -48,6 +51,11 @@ mariadb_mysql_settings:
   query_cache_size: "16M"
   # MariaDB default: https://mariadb.com/kb/en/server-system-variables/#thread_cache_size
   thread_cache_size: 256
+  max_connections: 100000
+  max_connect_errors: 4294967295
+
+mariadb_proxy_protocol_networks: "localhost"
+mariadb_max_connect_errors: 4294967295
 
 # Define TLS certs & keys which will be used to encrypt mysql, WSREP, SST connections
 # This variable should have defined exactly three items, any other item count is handled like none.
@@ -214,7 +222,7 @@ mariadb_innodb_mem_multiplier: 0.5
 #   | round | int }}
 
 # Maximum allowed concurrent connections. MySQL default is 151
-mariadb_max_connections: "auto"
+mariadb_max_connections: 100000
 
 # The length of time in seconds an InnoDB transaction waits for a row lock before giving up.
 mariadb_innodb_lock_wait_timeout: "50"
