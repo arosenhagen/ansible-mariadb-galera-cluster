@@ -7,6 +7,7 @@
       The NIC name "{{ galera_cluster_bind_interface }}" specified in
       "galera_cluster_bind_interface" does not exist on the target host.
       Available interfaces are: "{{ ansible_interfaces | join(',') }}".
+  when: galera_enabled
   tags:
     - install
     - config
